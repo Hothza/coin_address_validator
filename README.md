@@ -13,9 +13,9 @@ Supported coins:
 
 If you find this gem useful please send few coins for coffee:
 
-BTC: 1HRqmR2dbuHKeNWp478W77NxLzPi63QoKi
-LTC: LUzmQEYEMHxh7Q8JWh3vjW2BYCGd8VxANF
-DASH: XtPu4gA71zMdp37x3XiYdG2U25UA85Gq1w
+- BTC: 1HRqmR2dbuHKeNWp478W77NxLzPi63QoKi
+- LTC: LUzmQEYEMHxh7Q8JWh3vjW2BYCGd8VxANF
+- DASH: XtPu4gA71zMdp37x3XiYdG2U25UA85Gq1w
 
 Thank you! :)
 

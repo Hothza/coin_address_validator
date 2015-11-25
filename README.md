@@ -41,7 +41,7 @@ This gem has two public methods:
 ```ruby
 is_address_valid?() 
 ```
-which checks if address passed as a parameter is valid BASE58 string,
+which checks if address passed as a parameter is valid BASE58 string, has correct length
 and checksum from decoded address is equal to first four bytes of SHA256(SHA256(h160))
 
 Second one:

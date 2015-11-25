@@ -1,3 +1,27 @@
+# Copyright (c) 2015, Hothza
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+#
+# * Redistributions of source code must retain the above copyright notice, this
+#   list of conditions and the following disclaimer.
+#
+# * Redistributions in binary form must reproduce the above copyright notice,
+#   this list of conditions and the following disclaimer in the documentation
+#   and/or other materials provided with the distribution.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+# FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+# SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+# CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+# OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
 require "coins_address_validator/version"
 require 'base58'
 require 'digest'
@@ -5,19 +29,22 @@ require 'digest'
 module CoinsAddressValidator
   class Validator
     def get_address_info(address)
-      decoded = decode(address)
-      if is_checksum_valid?(decoded)
-        info = NETWORKS[decoded[:version].to_i(16)]
-        info = {} if info.nil?
-        { :valid => true, :info => info }
-      else
-        { :valid => false, :info => {} }
+      if !address.nil? && !address.empty?
+        decoded = decode(address)
+        if has_valid_length?(address, decoded[:version].to_i(16)) && is_checksum_valid?(decoded)
+          info = NETWORKS[decoded[:version].to_i(16)]
+          info = {} if info.nil? # Version is not supported (yet) - return empty info for such coin
+      
+          return { :valid => true, :info => info }
+        end
       end
+      return { :valid => false, :info => {} }
     end
     
     def is_address_valid?(address)
       if !address.nil? && !address.empty?
-        is_checksum_valid?(decode(address))
+        decoded = decode(address)
+        is_checksum_valid?(decoded) && has_valid_length?(address, decoded[:version].to_i(16))
       else
         false
       end
@@ -81,7 +108,25 @@ module CoinsAddressValidator
         double_sha256 = (Digest::SHA256.new << (Digest::SHA256.new << [decoded[:h160]].pack('H*')).digest)
         double_sha256.hexdigest[0, 8] == decoded[:checksum]
       end
-    
+      
+      def has_valid_length?(address, version)
+        if version == 0
+          return address.length < 35
+        elsif version == 1
+          return address.length == 33
+        elsif version == 2
+          return address.length == 33 || address.length == 34
+        elsif version > 2 && version < 144
+          return address.length == 34
+        elsif version == 144
+          return address.length == 34 || address.length == 35
+        elsif version > 144 && version < 256
+          return address.length == 35
+        else
+          return false
+        end
+      end
+      
       def b58tos(string)
         value = 0
         prefix = 0

@@ -1,8 +1,23 @@
 # CoinsAddressValidator
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/coins_address_validator`. To experiment with that code, run `bin/console` for an interactive prompt.
+This gem allows you to check if virtual coin address is valid and retrieve information about it.
 
-TODO: Delete this and the text above, and describe your gem
+Supported coins: 
+ - Bitcoin (BTC),
+ - DASH (DASH),
+ - Dogecoin (DOGE),
+ - Litecoin (LTC),
+ - Namecoin (NMC),
+ - Peercoin (PPC),
+ - Primecoin (XPM)
+
+If you find this gem useful please send few coins for coffee:
+
+BTC: 1HRqmR2dbuHKeNWp478W77NxLzPi63QoKi
+LTC: LUzmQEYEMHxh7Q8JWh3vjW2BYCGd8VxANF
+DASH: XtPu4gA71zMdp37x3XiYdG2U25UA85Gq1w
+
+Thank you! :)
 
 ## Installation
 
@@ -22,17 +37,22 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+This gem has two public methods:
+```ruby
+is_address_valid?() 
+```
+which checks if address passed as a parameter is valid BASE58 string,
+and checksum from decoded address is equal to first four bytes of SHA256(SHA256(h160))
 
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release` to create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+Second one:
+```ruby
+get_address_info()
+```
+returns information about network (Bitcoin, Litecoin, etc.), network symbol and type of address. 
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/coins_address_validator/fork )
+1. Fork it ( https://github.com/Hothza/coins_address_validator/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)

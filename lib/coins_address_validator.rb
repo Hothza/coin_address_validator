@@ -7,7 +7,9 @@ module CoinsAddressValidator
     def get_address_info(address)
       decoded = decode(address)
       if is_checksum_valid?(decoded)
-        { :valid => true, :info => NETWORKS[decoded[:version].to_i] }
+        info = NETWORKS[decoded[:version].to_i(16)]
+        info = {} if info.nil?
+        { :valid => true, :info => info }
       else
         { :valid => false, :info => {} }
       end

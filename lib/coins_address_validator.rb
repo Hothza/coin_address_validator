@@ -23,7 +23,6 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 require "coins_address_validator/version"
-require 'base58'
 require 'digest'
 
 module CoinsAddressValidator

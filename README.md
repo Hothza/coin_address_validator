@@ -1,6 +1,8 @@
-# CoinsAddressValidator
+# CoinsAddressValidator 
 
 This gem allows you to check if virtual coin address is valid and retrieve information about it.
+
+Build status: [![Build Status](https://travis-ci.org/Hothza/coin_address_validator.svg)](https://travis-ci.org/Hothza/coin_address_validator)
 
 Supported coins: 
  - Bitcoin (BTC),

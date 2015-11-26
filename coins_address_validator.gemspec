@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
 #    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com' to prevent pushes to rubygems.org, or delete to allow pushes to any server."
 #  end
 
-  spec.summary       = %q{TODO: CoinsAddressValidator - gem which allows you to check if virtual coin address is valid and retrieve information about it.}
+  spec.summary       = %q{CoinsAddressValidator - gem which allows you to check if virtual coin address is valid and retrieve information about it.}
   spec.homepage      = "https://github.com/Hothza/coin_address_validator"
   spec.license       = "BSD"
 

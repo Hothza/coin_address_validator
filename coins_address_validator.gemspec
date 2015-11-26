@@ -9,14 +9,13 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Hothza"]
   spec.email         = ["hothza@users.noreply.github.com"]
 
-  if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com' to prevent pushes to rubygems.org, or delete to allow pushes to any server."
-  end
+#  if spec.respond_to?(:metadata)
+#    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com' to prevent pushes to rubygems.org, or delete to allow pushes to any server."
+#  end
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
-  spec.license       = "MIT"
+  spec.summary       = %q{TODO: CoinsAddressValidator - gem which allows you to check if virtual coin address is valid and retrieve information about it.}
+  spec.homepage      = "https://github.com/Hothza/coin_address_validator"
+  spec.license       = "BSD"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = "exe"

@@ -45,6 +45,18 @@ class TestCoinsAddressValidator < Minitest::Test
       assert v.is_address_valid?(a), "Assertion failed on: #{a}"
     end
   end
+  
+  def test_empty_or_nil_address
+    v = CoinsAddressValidator::Validator.new
+    assert !v.is_address_valid?('')
+    assert !v.is_address_valid?(nil)
+  end
+
+  def test_if_too_long_address_is_invalid
+    toolong = '12e4iWWdD5eHvNQcs55QNyrHjSPGKeyeZ9jiY1UtioeMXQzkaGsBGjpsmtPR5AWkjXVUehpoEfQ'
+    v = CoinsAddressValidator::Validator.new
+    assert !v.is_address_valid?(toolong)
+  end
 
   def test_if_incorrect_bitcoin_address_is_not_valid
     addr = [

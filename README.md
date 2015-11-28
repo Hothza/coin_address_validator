@@ -1,4 +1,4 @@
-# CoinsAddressValidator [![Build Status](https://travis-ci.org/Hothza/coin_address_validator.svg)](https://travis-ci.org/Hothza/coin_address_validator) [![Gem Version](https://badge.fury.io/rb/coins_address_validator.svg)](https://badge.fury.io/rb/coins_address_validator)
+# CoinsAddressValidator [![Build Status](https://travis-ci.org/Hothza/coin_address_validator.svg)](https://travis-ci.org/Hothza/coin_address_validator) [![Gem Version](https://badge.fury.io/rb/coins_address_validator.svg)](https://badge.fury.io/rb/coins_address_validator) [![Test Coverage](https://codeclimate.com/github/Hothza/coin_address_validator/badges/coverage.svg)](https://codeclimate.com/github/Hothza/coin_address_validator/coverage)
 
 This gem allows you to check if virtual coin address is valid and retrieve information about it.
 
